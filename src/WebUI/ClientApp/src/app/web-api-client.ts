@@ -1062,7 +1062,8 @@ export class TodoItemDto implements ITodoItemDto {
     title?: string | undefined;
     done?: boolean;
     priority?: number;
-    note?: string | undefined;
+  note?: string | undefined;
+  color?: string;
 
     constructor(data?: ITodoItemDto) {
         if (data) {
@@ -1109,7 +1110,8 @@ export interface ITodoItemDto {
     title?: string | undefined;
     done?: boolean;
     priority?: number;
-    note?: string | undefined;
+  note?: string | undefined;
+  color?: string;
 }
 
 export class CreateTodoListCommand implements ICreateTodoListCommand {
