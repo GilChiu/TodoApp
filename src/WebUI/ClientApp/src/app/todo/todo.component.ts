@@ -7,16 +7,13 @@ import {
   CreateTodoListCommand, UpdateTodoListCommand,
   CreateTodoItemCommand, UpdateTodoItemDetailCommand
 } from '../web-api-client';
-import { ITodoListDto } from '../web-api-client';
+
 @Component({
   selector: 'app-todo-component',
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss']
 })
-
 export class TodoComponent implements OnInit {
-  selectedColorIndex: number = 0;
-  lightColors: string[] = ['lightblue', 'lightgreen', 'lightpink', 'lightsalmon', 'lightseagreen', 'white'];
   debug = false;
   deleting = false;
   deleteCountDown = 0;
@@ -45,20 +42,7 @@ export class TodoComponent implements OnInit {
     private modalService: BsModalService,
     private fb: FormBuilder
   ) { }
-  
-  saveColor(): void {
-    // Implement code to save the selected color for the specific todo item
-    // For example, update the item's color with this.selectedColor
-    if (this.selectedItem) {
-      this.selectedItem.color = this.selectedColor;
-    }
-  }
-  changeSelectedColor(): void {
-    this.selectedColorIndex = (this.selectedColorIndex + 1) % this.lightColors.length;
-  }
-  get selectedColor(): string {
-    return this.lightColors[this.selectedColorIndex];
-  }
+
   ngOnInit(): void {
     this.listsClient.get().subscribe(
       result => {
