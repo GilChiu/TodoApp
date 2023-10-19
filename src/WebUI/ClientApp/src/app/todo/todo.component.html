@@ -38,7 +38,7 @@
         </button>
       </div>
       <ul id="todo-items" class="list-group mb-2">
-        <li class="list-group-item" *ngFor="let item of selectedList.items; index as i"  [style.background-color]="item.color">
+        <li class="list-group-item" *ngFor="let item of selectedList.items; index as i">
           <div class="d-flex">
             <div class="todo-item-checkbox">
               <input type="checkbox" [(ngModel)]="item.done" (change)="updateItem(item)" />
@@ -57,7 +57,6 @@
                 class="btn btn-default btn-xs" role="button">
                 <i class="bi bi-three-dots-vertical"></i>
               </button>
-
             </div>
           </div>
         </li>
@@ -128,9 +127,6 @@
         <label for="note">Note</label>
         <textarea id="note" class="form-control" rows="3" formControlName="note"></textarea>
       </div>
-      <div>
-        <div class="color-circle" [style.background-color]="selectedColor" (click)="changeSelectedColor()"></div>
-      </div>
     </form>
     <div *ngIf="debug">
       <pre>{{ itemDetailsFormGroup.value | json }}</pre>
@@ -143,7 +139,7 @@
       </div>
       <div class="float-end">
         <button class="btn btn-default" (click)="itemDetailsModalRef.hide()">Cancel</button>
-        <button class="btn btn-primary" (click)="updateItemDetails()" (click)="saveColor()">Update</button>
+        <button class="btn btn-primary" (click)="updateItemDetails()">Update</button>
       </div>
     </div>
   </div>
