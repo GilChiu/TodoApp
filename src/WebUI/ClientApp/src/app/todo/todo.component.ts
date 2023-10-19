@@ -7,7 +7,6 @@ import {
   CreateTodoListCommand, UpdateTodoListCommand,
   CreateTodoItemCommand, UpdateTodoItemDetailCommand
 } from '../web-api-client';
-import { ITodoListDto } from '../web-api-client';
 @Component({
   selector: 'app-todo-component',
   templateUrl: './todo.component.html',
@@ -35,7 +34,8 @@ export class TodoComponent implements OnInit {
     id: [null],
     listId: [null],
     priority: [''],
-    note: ['']
+    note: [''],
+    color:['']
   });
 
 
@@ -59,6 +59,8 @@ export class TodoComponent implements OnInit {
   get selectedColor(): string {
     return this.lightColors[this.selectedColorIndex];
   }
+
+
   ngOnInit(): void {
     this.listsClient.get().subscribe(
       result => {
@@ -164,6 +166,7 @@ export class TodoComponent implements OnInit {
 
   updateItemDetails(): void {
     const item = new UpdateTodoItemDetailCommand(this.itemDetailsFormGroup.value);
+    this.selectedItem.color = item.color;
     this.itemsClient.updateItemDetails(this.selectedItem.id, item).subscribe(
       () => {
         if (this.selectedItem.listId !== item.listId) {
@@ -192,6 +195,7 @@ export class TodoComponent implements OnInit {
       listId: this.selectedList.id,
       priority: this.priorityLevels[0].value,
       title: '',
+      color: 'white',
       done: false
     } as TodoItemDto;
 
