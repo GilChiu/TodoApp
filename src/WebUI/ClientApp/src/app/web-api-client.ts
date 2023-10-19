@@ -26,6 +26,7 @@ export interface ITodoItemsClient {
 @Injectable({
     providedIn: 'root'
 })
+
 export class TodoItemsClient implements ITodoItemsClient {
     private http: HttpClient;
     private baseUrl: string;
@@ -1063,6 +1064,7 @@ export class TodoItemDto implements ITodoItemDto {
     done?: boolean;
     priority?: number;
     note?: string | undefined;
+    color?: string;
 
     constructor(data?: ITodoItemDto) {
         if (data) {
@@ -1110,6 +1112,7 @@ export interface ITodoItemDto {
     done?: boolean;
     priority?: number;
     note?: string | undefined;
+    color?: string;
 }
 
 export class CreateTodoListCommand implements ICreateTodoListCommand {
