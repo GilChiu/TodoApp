@@ -166,7 +166,7 @@ export class TodoComponent implements OnInit {
 
   updateItemDetails(): void {
     const item = new UpdateTodoItemDetailCommand(this.itemDetailsFormGroup.value);
-    this.selectedItem.color = item.color;
+    this.selectedItem.color = item.color
     this.itemsClient.updateItemDetails(this.selectedItem.id, item).subscribe(
       () => {
         if (this.selectedItem.listId !== item.listId) {
@@ -224,17 +224,17 @@ export class TodoComponent implements OnInit {
         .subscribe(
           result => {
             item.id = result;
-            this.updateColor(item);
+            
           },
           error => console.error(error)
         );
     } else {
       this.itemsClient.update(item.id, item).subscribe(
         () => {
-          this.updateColor(item);
+          
           console.log('Update succeeded.')
           },
-        (error) => console.error(error)
+        error => console.error(error)
       );
     }
 

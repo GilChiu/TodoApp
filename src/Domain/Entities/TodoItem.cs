@@ -1,4 +1,6 @@
-﻿namespace Todo_App.Domain.Entities;
+﻿using System.Drawing;
+
+namespace Todo_App.Domain.Entities;
 
 public class TodoItem : BaseAuditableEntity
 {
@@ -7,6 +9,7 @@ public class TodoItem : BaseAuditableEntity
     public string? Title { get; set; }
 
     public string? Note { get; set; }
+    public string? Color { get; set; }
 
     public PriorityLevel Priority { get; set; }
 
@@ -28,5 +31,5 @@ public class TodoItem : BaseAuditableEntity
     }
 
     public TodoList List { get; set; } = null!;
-    public string? Color { get; set; }
+    
 }
