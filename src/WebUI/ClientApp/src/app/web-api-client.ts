@@ -853,8 +853,8 @@ export class UpdateTodoItemDetailCommand implements IUpdateTodoItemDetailCommand
     id?: number;
     listId?: number;
     priority?: PriorityLevel;
-    note?: string | undefined;
-    color?: string | undefined;
+  note?: string | undefined;
+  color?: string | undefined;
 
     constructor(data?: IUpdateTodoItemDetailCommand) {
         if (data) {
@@ -897,7 +897,7 @@ export interface IUpdateTodoItemDetailCommand {
     id?: number;
     listId?: number;
     priority?: PriorityLevel;
-  note?: string | undefined;
+    note?: string | undefined;
   color?: string;
 }
 
@@ -1067,7 +1067,7 @@ export class TodoItemDto implements ITodoItemDto {
     done?: boolean;
     priority?: number;
   note?: string | undefined;
-  color?: string;
+  color?: string | undefined;
 
     constructor(data?: ITodoItemDto) {
         if (data) {
@@ -1085,8 +1085,8 @@ export class TodoItemDto implements ITodoItemDto {
             this.title = _data["title"];
             this.done = _data["done"];
             this.priority = _data["priority"];
-          this.note = _data["note"];
-          this.color = _data["color"];
+            this.note = _data["note"];
+            this.color = _data["color"];
         }
     }
 
@@ -1116,7 +1116,7 @@ export interface ITodoItemDto {
     title?: string | undefined;
     done?: boolean;
     priority?: number;
-  note?: string | undefined;
+    note?: string | undefined;
   color?: string;
 }
 

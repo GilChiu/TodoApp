@@ -35,7 +35,7 @@ export class TodoComponent implements OnInit {
     listId: [null],
     priority: [''],
     note: [''],
-    color:['']
+    color:['white']
   });
 
 
@@ -179,7 +179,6 @@ export class TodoComponent implements OnInit {
           this.selectedItem.listId = item.listId;
           this.lists[listIndex].items.push(this.selectedItem);
         }
-
         this.selectedItem.priority = item.priority;
         this.selectedItem.note = item.note;
         this.itemDetailsModalRef.hide();
@@ -195,7 +194,7 @@ export class TodoComponent implements OnInit {
       listId: this.selectedList.id,
       priority: this.priorityLevels[0].value,
       title: '',
-      color: 'white',
+      color: '',
       done: false
     } as TodoItemDto;
 
@@ -225,13 +224,17 @@ export class TodoComponent implements OnInit {
         .subscribe(
           result => {
             item.id = result;
+            this.updateColor(item);
           },
           error => console.error(error)
         );
     } else {
       this.itemsClient.update(item.id, item).subscribe(
-        () => console.log('Update succeeded.'),
-        error => console.error(error)
+        () => {
+          this.updateColor(item);
+          console.log('Update succeeded.')
+          },
+        (error) => console.error(error)
       );
     }
 
@@ -241,7 +244,9 @@ export class TodoComponent implements OnInit {
       setTimeout(() => this.addItem(), 250);
     }
   }
-
+  updateColor(item: TodoItemDto): void {
+    this.selectedItem.color = item.color;
+  }
   deleteItem(item: TodoItemDto, countDown?: boolean) {
     if (countDown) {
       if (this.deleting) {
